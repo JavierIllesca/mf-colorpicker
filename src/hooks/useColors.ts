@@ -11,7 +11,8 @@ export const useColors = () => {
 
     const handleSubmitSaveColor = (event: SubmitEvent<HTMLFormElement>) => {
         event.preventDefault();
-        setColorsList([color, ...colorsList]);   
+        if (colorsList.some(c => c.toLowerCase() === color.toLowerCase())) return;
+        setColorsList([color, ...colorsList]);
     }
 
     useEffect(() => localStorage.setItem("colorsList", JSON.stringify(colorsList)), [colorsList])
