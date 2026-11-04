@@ -30,7 +30,7 @@ export default defineConfig({
     // You need to set a unique value that is not equal to other applications
     uniqueName: "mf_colorpicker",
     // publicPath must be configured if using manifest
-    publicPath: "http://localhost:3001/",
+    publicPath: "https://mf-colorpicker-tool.netlify.app/",
   },
 
   experiments: {
@@ -79,7 +79,7 @@ export default defineConfig({
       template: "./index.html",
     }),
     new ModuleFederationPlugin(mfConfig),
-    isDev ? new RefreshPlugin() : null,
+    isDev ? new (RefreshPlugin as any)() : null,
   ].filter(Boolean),
   optimization: {
     minimizer: [
